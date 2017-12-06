@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 void info(const char* infoMsg);
 void error(const char* errorMsgFormat, const char* reason);

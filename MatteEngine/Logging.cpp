@@ -1,6 +1,20 @@
+#include "spdlog\spdlog.h"
+#include <string>
 #include <SDL.h>
 #include <SDL_image.h>
 #include <stdio.h>
+
+namespace spd = spdlog;
+
+
+// Gets or creates a console logger with name `logger_name`
+auto retrieve_console_logger(std::string logger_name) {
+	auto logger = spd::get(logger_name);
+	if (!logger) {
+		return spd::stdout_color_mt(logger_name);
+	}
+	return logger;
+}
 
 void info(const char* infoMsg) {
 	printf(infoMsg);
