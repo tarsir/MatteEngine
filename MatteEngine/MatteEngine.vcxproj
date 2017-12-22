@@ -126,15 +126,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Color.cpp" />
+    <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Logging.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BaseComponent.h" />
+    <ClInclude Include="Color.h" />
+    <ClInclude Include="DrawableComponent.h" />
+    <ClInclude Include="Entity.h" />
     <ClInclude Include="Errors.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Logging.h" />
+    <ClInclude Include="Map.h" />
+    <ClInclude Include="PositionComponent.h" />
+    <ClInclude Include="Render.h" />
+    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="Tileset.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

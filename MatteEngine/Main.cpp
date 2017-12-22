@@ -3,6 +3,7 @@
 #include <SDL_image.h>
 #include "spdlog\spdlog.h"
 #include "Image.h"
+#include "Color.h"
 #include "Window.h"
 #include "Logging.h"
 
@@ -13,14 +14,12 @@ void die() {
 
 void shutdown(SDL_Window* window) {
 	SDL_DestroyWindow(window);
-	//SDL_Quit();
+	SDL_Quit();
 }
 
 int main(int argc, char * argv[])
 {
 	auto main_logger = spdlog::stdout_color_mt("Main.cpp");
-	SDL_Event e;
-	bool quit = false;
 
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
 	{
@@ -49,11 +48,14 @@ int main(int argc, char * argv[])
 	set_pixel_format(screen->format);
 	SDL_Surface* die = load_image("die.png");
 
-	//transparency 
-	Uint32 transparency_key = SDL_MapRGB(die->format, 64, 64, 64);
-	SDL_SetColorKey(die, SDL_TRUE, transparency_key);
+	Color transparent_gray = { 64, 64, 64 };
+	add_transparency_to_surface(die, transparent_gray);
+
 	SDL_BlitSurface(die, NULL, screen, NULL);
 	SDL_UpdateWindowSurface(window);
+
+	SDL_Event e;
+	bool quit = false;
 
 	while (!quit) {
 		while (SDL_PollEvent(&e) != 0) {

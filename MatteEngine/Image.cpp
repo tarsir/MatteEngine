@@ -3,6 +3,7 @@
 #include <SDL_image.h>
 #include "spdlog\spdlog.h"
 #include "Image.h"
+#include "Color.h"
 #include "Logging.h"
 
 auto image_logger = spdlog::stdout_color_mt("Image.h");
@@ -34,6 +35,13 @@ SDL_Surface* load_image(std::string path) {
 	}
 
 	return final_surface;
+}
+
+void add_transparency_to_surface(SDL_Surface* target_surface, Color& transparent_color) {
+	Uint32 transparency_key = color_to_rgb_key(target_surface->format, transparent_color);
+	if (SDL_SetColorKey(target_surface, SDL_TRUE, transparency_key) < 0) {
+		throw std::runtime_error("Setting transparency failed");
+	}
 }
 
 void set_pixel_format(SDL_PixelFormat* new_pixel_format) {
