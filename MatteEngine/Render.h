@@ -29,7 +29,7 @@ namespace SRender {
 		apply_surface_to_screen(drawable->get_texture(), gfx, position);
 	}
 
-	void draw_entities(EntityManager* entity_mgr, Graphics* gfx) {
+	void update(EntityManager* entity_mgr, Graphics* gfx) {
 		std::vector<Entity*> drawable_entities = entity_mgr->entities_matching_component(DRAWABLE);
 		std::sort(drawable_entities.begin(), drawable_entities.end(), sorter);
 

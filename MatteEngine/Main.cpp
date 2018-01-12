@@ -20,6 +20,8 @@ void update(Graphics* window, EntityManager* mgr) {
 	bool quit = false;
 	while (!quit) {
 		while (SDL_PollEvent(&e) != 0) {
+			SMotion::update(mgr, e);
+			//system_manager->get_interactive_systems().forEach(handle_input(e.type));
 			switch (e.type) {
 				case SDL_QUIT:
 					quit = true;
@@ -28,19 +30,13 @@ void update(Graphics* window, EntityManager* mgr) {
 					main_logger->info(e.button.x);
 					main_logger->info(e.button.y);
 					break;
-				case SDL_KEYDOWN:
-					main_logger->info(e.key.keysym.scancode);
-					if (e.key.keysym.sym == SDLK_RIGHT) {
-						SMotion::move_entity(0, mgr, 25, 25);
-					}
-					break;
 				// no reason to handle default
 			}
 		}
 
 		// system updates go here
 		window->fill_screen();
-		SRender::draw_entities(mgr, window);
+		SRender::update(mgr, window);
 		window->update_window();
 	}
 }

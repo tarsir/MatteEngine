@@ -9,7 +9,7 @@
 
 auto graphics_logger = spdlog::stdout_color_mt("Graphics.cpp");
 
-Graphics::Graphics() : Graphics(640, 480, Graphics::WindowPosition::centered, Graphics::WindowPosition::centered) {}
+Graphics::Graphics() : Graphics(1440, 900, Graphics::WindowPosition::centered, Graphics::WindowPosition::centered) {}
 
 Graphics::Graphics(int width, int height, int pos_x, int pos_y) {
 	this->window = SDL_CreateWindow(
