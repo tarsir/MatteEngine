@@ -150,6 +150,7 @@
     <ClInclude Include="PositionComponent.h" />
     <ClInclude Include="Render.h" />
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="SystemManager.h" />
     <ClInclude Include="Tileset.h" />
     <ClInclude Include="Util.h" />
     <ClInclude Include="Graphics.h" />
