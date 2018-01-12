@@ -2,70 +2,64 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include "spdlog\spdlog.h"
+#include "Initialization.h"
+#include "Util.h"
 #include "Image.h"
 #include "Color.h"
-#include "Window.h"
+#include "Graphics.h"
 #include "Logging.h"
+#include "Sprite.h"
+#include "Render.h"
+#include "Motion.h"
 
-void die() {
-	SDL_Delay(5000);
-	exit(1);
-}
+auto main_logger = spdlog::stdout_color_mt("Main.cpp");
 
-void shutdown(SDL_Window* window) {
-	SDL_DestroyWindow(window);
-	SDL_Quit();
-}
-
-int main(int argc, char * argv[])
-{
-	auto main_logger = spdlog::stdout_color_mt("Main.cpp");
-
-	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
-	{
-		main_logger->error("SDL initialization failed with error: {}", SDL_GetError());
-		die();
-	}
-	else
-	{
-		main_logger->info("SDL initialization succeeded!");
-	}
-
-	if (!image_init()) {
-		main_logger->error("SDL_image initialization failed with error: {}", IMG_GetError());
-		die();
-	}
-
-	SDL_Window* window = initializeWindow();
-
-	if (window == NULL) {
-		sdl_error("Could not create window: %s\n");
-		die();
-	}
-
-	SDL_Surface* screen = SDL_GetWindowSurface(window);
-
-	set_pixel_format(screen->format);
-	SDL_Surface* die = load_image("die.png");
-
-	Color transparent_gray = { 64, 64, 64 };
-	add_transparency_to_surface(die, transparent_gray);
-
-	SDL_BlitSurface(die, NULL, screen, NULL);
-	SDL_UpdateWindowSurface(window);
-
+void update(Graphics* window, EntityManager* mgr) {
 	SDL_Event e;
-	bool quit = false;
 
+	bool quit = false;
 	while (!quit) {
 		while (SDL_PollEvent(&e) != 0) {
-			if (e.type == SDL_QUIT) {
-				quit = true;
+			switch (e.type) {
+				case SDL_QUIT:
+					quit = true;
+					break;
+				case SDL_MOUSEBUTTONDOWN:
+					main_logger->info(e.button.x);
+					main_logger->info(e.button.y);
+					break;
+				case SDL_KEYDOWN:
+					main_logger->info(e.key.keysym.scancode);
+					if (e.key.keysym.sym == SDLK_RIGHT) {
+						SMotion::move_entity(0, mgr, 25, 25);
+					}
+					break;
+				// no reason to handle default
 			}
 		}
-	}
 
-	shutdown(window);
+		// system updates go here
+		window->fill_screen();
+		SRender::draw_entities(mgr, window);
+		window->update_window();
+	}
+}
+
+int main(int argc, char *argv[])
+{
+	initialize_sdl();
+
+	Graphics* our_window = new Graphics();
+
+	EntityManager* mgr = new EntityManager();
+	Entity* die_sprite = ESprite::makeSprite("die.png", 1);
+	mgr->register_entity(die_sprite);
+
+	update(our_window, mgr);
+
+	our_window->shutdown();
+	SDL_Delay(2000);
 
 	return 0;
 }
+

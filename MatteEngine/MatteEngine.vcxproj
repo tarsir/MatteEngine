@@ -40,7 +40,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>LLVM-vs2014</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -129,24 +129,30 @@
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Image.cpp" />
+    <ClCompile Include="Initialization.cpp" />
     <ClCompile Include="Logging.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Window.cpp" />
+    <ClCompile Include="Graphics.cpp" />
+    <ClCompile Include="Util.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseComponent.h" />
     <ClInclude Include="Color.h" />
+    <ClInclude Include="ComponentList.h" />
     <ClInclude Include="DrawableComponent.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Errors.h" />
     <ClInclude Include="Image.h" />
+    <ClInclude Include="Initialization.h" />
     <ClInclude Include="Logging.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="Motion.h" />
     <ClInclude Include="PositionComponent.h" />
     <ClInclude Include="Render.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Tileset.h" />
-    <ClInclude Include="Window.h" />
+    <ClInclude Include="Util.h" />
+    <ClInclude Include="Graphics.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
