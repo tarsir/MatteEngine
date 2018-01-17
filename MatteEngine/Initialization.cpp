@@ -1,5 +1,6 @@
 #include <SDL.h>
 #include <SDL_image.h>
+#include <SDL_mixer.h>
 #include "Image.h"
 #include "Util.h"
 #include "spdlog\spdlog.h"
@@ -22,4 +23,12 @@ void initialize_sdl() {
 		init_logger->error("SDL_image initialization failed with error: {}", IMG_GetError());
 		die();
 	}
+
+	// Mixer init
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096) < 0) {
+		init_logger->error("SDL_mixer initialization failed with error: {}", Mix_GetError());
+		die();
+	}
+
+
 }

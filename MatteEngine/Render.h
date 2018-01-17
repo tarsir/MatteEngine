@@ -14,7 +14,7 @@ auto render_logger = spdlog::stdout_color_mt("Render.h");
 struct LayerComparison {
 	bool operator()(const Entity* lhs, const Entity* rhs) const {
 		DrawableComponent *lhd = dynamic_cast<DrawableComponent*>(lhs->get_component(DRAWABLE)), *rhd = dynamic_cast<DrawableComponent*>(rhs->get_component(DRAWABLE));
-		return lhd->get_layer() < rhd->get_layer();
+		return lhd->get_layer() > rhd->get_layer();
 	}
 } sorter;
 

@@ -9,7 +9,6 @@
 auto sprite_logger = spdlog::stdout_color_mt("Sprite.h");
 
 namespace ESprite {
-	//Entity* makeSprite(SDL_Surface* spriteTexture, uint32_t layer = 10) {
 	Entity* makeSprite(std::string sprite_filename, uint32_t layer = 10) {
 		Entity* base = new Entity();
 		DrawableComponent* drawable = new DrawableComponent(sprite_filename, layer);

@@ -41,7 +41,9 @@ Entity* EntityManager::register_entity(Entity* new_entity) {
 	new_entity->set_entity_id(this->latest_entity_id);
 	this->entity_list.push_back(new_entity);
 	this->latest_entity_id += 1;
-	entity_cpp_logger->info("Added new entity with ID {}, now have: {} entities", new_entity->get_entity_id(), this->latest_entity_id);
+	if (this->latest_entity_id % 1000 == 0) {
+		entity_cpp_logger->info("Added new entity with ID {}, now have: {} entities", new_entity->get_entity_id(), this->latest_entity_id);
+	}
 	return new_entity;
 }
 

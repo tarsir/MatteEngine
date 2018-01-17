@@ -107,5 +107,8 @@
     <ClInclude Include="SystemManager.h">
       <Filter>Header Files\Systems</Filter>
     </ClInclude>
+    <ClInclude Include="EnvironmentTile.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -8,6 +8,7 @@ struct Graphics {
 private:
 	SDL_Window* window;
 	SDL_Surface* main_screen;
+	int fps_cap;
 public:
 	Graphics();
 	Graphics(int width, int height, int pos_x, int pos_y);

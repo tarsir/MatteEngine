@@ -11,6 +11,7 @@ public:
 	int y;
 	PositionComponent(int _x, int _y) : x{ _x }, y{ _y } {}
 
+	// why are these increment functions here? :thinking:
 	int increment_x() {
 		return this->x++;
 	}

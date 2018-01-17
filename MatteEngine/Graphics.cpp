@@ -32,6 +32,7 @@ Graphics::Graphics(int width, int height, int pos_x, int pos_y) {
 		die();
 	}
 	set_pixel_format(this->main_screen->format);
+	this->fps_cap = 120;
 }
 
 SDL_Surface* Graphics::fetch_screen() const {
