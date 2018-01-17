@@ -148,6 +148,7 @@
     <ClInclude Include="Logging.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Motion.h" />
+    <ClInclude Include="Music.h" />
     <ClInclude Include="PositionComponent.h" />
     <ClInclude Include="Render.h" />
     <ClInclude Include="Sprite.h" />

@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
 		main_logger->error("Couldn't load bgm with error: {}", Mix_GetError());
 		die();
 	}
-	//Mix_PlayMusic(test_bgm, 0);
+	Mix_PlayMusic(test_bgm, 0);
 
 	update(our_window, mgr);
 

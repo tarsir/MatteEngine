@@ -5,6 +5,7 @@
 #include "Graphics.h"
 #include "Entity.h"
 #include "Motion.h"
+#include "Music.h"
 #include "Render.h"
 
 namespace SystemManager {
@@ -19,5 +20,6 @@ namespace SystemManager {
 
 	void load_systems() {
 		event_updates.push_back(&SMotion::update);
+		event_updates.push_back(&SMusic::update);
 	}
 }
