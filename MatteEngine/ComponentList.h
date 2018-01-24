@@ -2,5 +2,6 @@
 
 enum ComponentTypes {
 	DRAWABLE = 9990,
-	POSITION
+	POSITION,
+	SPRITE
 };

@@ -1,6 +1,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_mixer.h>
+#include <SDL_ttf.h>
 #include "Image.h"
 #include "Util.h"
 #include "spdlog\spdlog.h"
@@ -21,6 +22,11 @@ void initialize_sdl() {
 
 	if (!image_init()) {
 		init_logger->error("SDL_image initialization failed with error: {}", IMG_GetError());
+		die();
+	}
+
+	if (TTF_Init() == -1) {
+		init_logger->error("SDL_TTF initialization failed with error: {}", TTF_GetError());
 		die();
 	}
 

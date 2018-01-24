@@ -93,7 +93,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\Programming\Other Installs\SDL2-2.0.7\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
@@ -127,18 +127,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Color.cpp" />
+    <ClCompile Include="Config.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Initialization.cpp" />
     <ClCompile Include="Logging.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Graphics.cpp" />
+    <ClCompile Include="Timing.cpp" />
     <ClCompile Include="Util.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseComponent.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="ComponentList.h" />
+    <ClInclude Include="Config.h" />
     <ClInclude Include="DrawableComponent.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EnvironmentTile.h" />
@@ -154,6 +157,7 @@
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SystemManager.h" />
     <ClInclude Include="Tileset.h" />
+    <ClInclude Include="Timing.h" />
     <ClInclude Include="Util.h" />
     <ClInclude Include="Graphics.h" />
   </ItemGroup>
