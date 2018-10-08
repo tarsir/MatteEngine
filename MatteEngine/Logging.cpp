@@ -17,7 +17,7 @@ auto retrieve_console_logger(std::string logger_name) {
 }
 
 void info(const char* infoMsg) {
-	printf(infoMsg);
+	printf("{}", infoMsg);
 }
 
 void error(const char* errorMsg, const char* reason) {
