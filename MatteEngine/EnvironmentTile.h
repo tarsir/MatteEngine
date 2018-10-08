@@ -13,7 +13,7 @@ auto tile_logger = spdlog::stdout_color_mt("EnvironmentTile.h");
 namespace EEnvironmentTile {
 	int default_tile_size = 32;
 
-	Entity* makeTile(SDL_Surface* tile_sfc, int x, int y, int layer = 5) {
+	Entity* makeTile(SDL_Texture* tile_sfc, int x, int y, int layer = 5) {
 		Entity* base = new Entity();
 
 		DrawableComponent* drawable = new DrawableComponent(tile_sfc, layer);

@@ -1,6 +1,8 @@
 #include <algorithm>
 #include <iterator>
 #include <vector>
+#include "AnimationComponent.h"
+#include "SpriteMapComponent.h"
 #include "PositionComponent.h"
 #include "DrawableComponent.h"
 #include "ComponentList.h"
@@ -61,6 +63,16 @@ Component* Entity::get_component(ComponentTypes type) const {
 				return true;
 			}
 			break;
+		case ANIMATION:
+			if (dynamic_cast<AnimationComponent*>(search_component)) {
+				return true;
+			}
+			break;
+		case SPRITE_MAP:
+			if (dynamic_cast<SpriteMapComponent*>(search_component)) {
+				return true;
+			}
+			break;
 		default:
 			entity_cpp_logger->error("wtf this component ain't real");
 			break;
@@ -70,7 +82,7 @@ Component* Entity::get_component(ComponentTypes type) const {
 
 	std::vector<Component*>::const_iterator searcher = std::find_if(this->components.cbegin(), this->components.cend(), matcher);
 	if (searcher == this->components.cend()) {
-		entity_cpp_logger->error("get_component({}) found nothing", type);
+		//entity_cpp_logger->error("get_component({}) found nothing", type);
 		return NULL;
 	}
 	else {

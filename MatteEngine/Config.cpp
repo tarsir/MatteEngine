@@ -16,10 +16,12 @@ std::pair<std::string, int> get_pair_from_entry(std::string config_entry) {
 	char *key, *value;
 	char *str_copy = new char[config_entry.length() - 1];
 	std::strcpy(str_copy, config_entry.c_str());
-	char* token_p;
+	char* token_p, *next_token;
+	const char *delim = " ";
+	rsize_t strmax = sizeof str_copy;
 
-	token_p = strtok(str_copy, " ");
-	for (int i = 0; token_p != NULL; token_p = strtok(NULL, " ")) {
+	token_p = strtok_s(str_copy, delim, &next_token);
+	for (int i = 0; token_p != NULL; token_p = strtok_s(NULL, delim, &next_token)) {
 		switch (i) {
 		case 0:
 			key = token_p;

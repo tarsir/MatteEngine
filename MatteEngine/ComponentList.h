@@ -3,5 +3,6 @@
 enum ComponentTypes {
 	DRAWABLE = 9990,
 	POSITION,
-	SPRITE
+	ANIMATION,
+	SPRITE_MAP
 };

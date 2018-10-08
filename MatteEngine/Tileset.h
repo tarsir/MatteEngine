@@ -3,6 +3,7 @@
 #include <SDL.h>
 #include <string>
 #include <map>
+#include "Graphics.h"
 #include "Image.h"
 #include "Entity.h"
 #include "EnvironmentTile.h"
@@ -14,8 +15,8 @@ auto tileset_logger = spdlog::stdout_color_mt("Tileset.h");
 
 class Tileset {
 private:
-	std::map<char, SDL_Surface*> tile_mapping; // the entities must have a DrawableComponent
-	std::map<char, SDL_Surface*>::iterator tile_mapping_it;
+	std::map<char, SDL_Texture*> tile_mapping; // the entities must have a DrawableComponent
+	std::map<char, SDL_Texture*>::iterator tile_mapping_it;
 	std::string identifier;
 
 	std::string find_tile_filename(std::string tile_name) {
@@ -25,13 +26,15 @@ private:
 	}
 
 public:
-	Tileset(std::string ident) : identifier{ ident } {
-		this->tile_mapping.emplace(EMPTY_TILE, load_image(this->find_tile_filename("empty")));
+	Tileset(std::string ident, Graphics* gfx = Graphics::getInstance()) : identifier{ ident } {
+		this->tile_mapping.emplace(EMPTY_TILE, load_image_as_texture(this->find_tile_filename("empty"), gfx));
 	}
 
-	Tileset() : Tileset("default") {}
+	//Tileset(std::string ident) : Tileset(ident, Graphics::getInstance()) {}
 
-	SDL_Surface* get_surface_for_tile_key(const char tile_key) {
+	Tileset(Graphics* gfx) : Tileset("default", gfx) {}
+
+	SDL_Texture* get_surface_for_tile_key(const char tile_key) {
 		this->tile_mapping_it = this->tile_mapping.find(tile_key);
 		if (this->tile_mapping_it != this->tile_mapping.end()) 
 			return this->tile_mapping.at(tile_key);

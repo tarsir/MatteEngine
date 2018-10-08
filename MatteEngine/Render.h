@@ -3,6 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include "ComponentList.h"
+#include "AnimationComponent.h"
 #include "DrawableComponent.h"
 #include "PositionComponent.h"
 #include "Entity.h"
@@ -19,17 +20,24 @@ struct LayerComparison {
 } sorter;
 
 namespace SRender {
-	void draw_single_entity(const Entity* entity, Graphics* gfx) {
+	void draw_single_entity(const Entity* entity, Graphics* gfx = Graphics::getInstance()) {
 		DrawableComponent *drawable = dynamic_cast<DrawableComponent*>(entity->get_component(DRAWABLE));
 		PositionComponent *position = dynamic_cast<PositionComponent*>(entity->get_component(POSITION));
 		if (position == nullptr || drawable == nullptr) {
 			render_logger->error("Drawing entity with ID {} broke", entity->get_entity_id());
 		}
 
-		apply_surface_to_screen(drawable->get_texture(), gfx, position);
+		AnimationComponent *anim = dynamic_cast<AnimationComponent*>(entity->get_component(ANIMATION));
+		if (anim != nullptr) {
+			if (anim->is_moving()) {
+
+			}
+		}
+
+		apply_surface_to_screen(drawable->get_texture(), position, gfx);
 	}
 
-	void update(EntityManager* entity_mgr, Graphics* gfx) {
+	void update(EntityManager* entity_mgr, Graphics* gfx = Graphics::getInstance()) {
 		std::vector<Entity*> drawable_entities = entity_mgr->entities_matching_component(DRAWABLE);
 		std::sort(drawable_entities.begin(), drawable_entities.end(), sorter);
 

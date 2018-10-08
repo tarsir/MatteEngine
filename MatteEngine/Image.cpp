@@ -1,6 +1,7 @@
 #include <string>
 #include <SDL.h>
 #include <SDL_image.h>
+#include "Graphics.h"
 #include "Image.h"
 #include "Color.h"
 #include "Logging.h"
@@ -19,7 +20,7 @@ bool image_init() {
 	return true;
 }
 
-SDL_Surface* load_image(std::string path) {
+SDL_Surface* load_image_as_surface(std::string path) {
 	SDL_Surface* final_surface = NULL;
 
 	SDL_Surface* loaded_surface = IMG_Load(path.c_str());
@@ -36,6 +37,10 @@ SDL_Surface* load_image(std::string path) {
 	image_logger->info("made a dude");
 
 	return final_surface;
+}
+
+SDL_Texture* load_image_as_texture(std::string path, Graphics* gfx = Graphics::getInstance()) {
+	return SDL_CreateTextureFromSurface(gfx->getRenderer(), load_image_as_surface(path));
 }
 
 void fill_surface(SDL_Surface* target_sfc) {
