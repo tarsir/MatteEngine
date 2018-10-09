@@ -63,6 +63,9 @@
     <ClCompile Include="SpriteMapComponent.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
+    <ClCompile Include="AnimationComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Logging.h">
@@ -137,5 +140,9 @@
     <ClInclude Include="AnimationComponent.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LICENSE.md" />
+    <None Include="README.md" />
   </ItemGroup>
 </Project>
