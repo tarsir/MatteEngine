@@ -43,5 +43,5 @@ public:
 SDL_Texture* build_string_texture(const char* message, TTF_Font* font, int& width, int& height);
 void apply_surface_to_screen(SDL_Texture* sfc, SDL_Rect, Graphics* our_window);
 void apply_surface_to_screen(SDL_Texture* sfc,  PositionComponent*, Graphics* our_window);
-void apply_partial_texture_to_screen(SDL_Texture*, const SDL_Rect*, PositionComponent*, Graphics*);
+void apply_partial_texture_to_screen(SDL_Texture*, const SDL_Rect, PositionComponent*, Graphics*);
 SDL_Texture* convert_surface_to_texture(SDL_Surface* sfc, Graphics* gfx);
