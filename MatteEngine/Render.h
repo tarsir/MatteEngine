@@ -56,7 +56,6 @@ namespace SRender {
 
 	void update(EntityManager* entity_mgr, Graphics* gfx = Graphics::getInstance()) {
 		std::vector<Entity*> drawable_entities = entity_mgr->entities_matching_component(DRAWABLE);
-		std::vector<Entity*> animate_entities = entity_mgr->entities_matching_component(SPRITE_MAP);
 		std::sort(drawable_entities.begin(), drawable_entities.end(), sorter);
 
 		for (auto entity : drawable_entities) {
