@@ -126,6 +126,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AnimationComponent.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="Entity.cpp" />

@@ -92,8 +92,11 @@ int main(int argc, char *argv[])
 	SystemManager::load_systems();
 
 	EntityManager* mgr = new EntityManager();
-	Entity* die_sprite = ESprite::makeSprite("die.png", 1);
-	mgr->register_entity(die_sprite);
+	Entity* test_sprite = ESprite::makeSprite("data/sprites/dwarf_1.png", 1);
+	mgr->register_entity(test_sprite);
+
+	// make sprite_map_component for our basic entity
+	ESprite::register_sprite_map_dev(test_sprite);
 
 	// make our test map and tileset
 	Tileset* test_tiles = new Tileset("blue");
@@ -103,7 +106,7 @@ int main(int argc, char *argv[])
 	Map* test_map = new Map("test_map.mmp");
 	test_map->register_map_tiles(mgr);
 
-	SMusic::load_music("test_music.mp3");
+	//SMusic::load_music("test_music.mp3");
 	update(mgr, our_window);
 
 	our_window->shutdown();

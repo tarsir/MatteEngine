@@ -1,3 +1,4 @@
+#include "ComponentList.h"
 #include "SpriteMapComponent.h"
 
 auto sprite_map_c_logger = spdlog::stdout_color_mt("SpriteMapComponent.h");

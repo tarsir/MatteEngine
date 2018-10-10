@@ -154,11 +154,11 @@ SDL_Texture* convert_surface_to_texture(SDL_Surface* sfc, Graphics* gfx = Graphi
 
 void apply_partial_texture_to_screen(
 	SDL_Texture* full_texture,
-	const SDL_Rect* bounding_rectangle,
+	const SDL_Rect bounding_rectangle,
 	PositionComponent* pos,
 	Graphics* gfx = Graphics::getInstance()
 ) {
-	SDL_Rect destination = { pos->x, pos->y, bounding_rectangle->w, bounding_rectangle->h};
+	SDL_Rect destination = { pos->x, pos->y, bounding_rectangle.w, bounding_rectangle.h};
 
-	SDL_RenderCopy(gfx->getRenderer(), full_texture, bounding_rectangle, &destination);
+	SDL_RenderCopy(gfx->getRenderer(), full_texture, &bounding_rectangle, &destination);
 }
