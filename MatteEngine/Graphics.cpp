@@ -91,7 +91,6 @@ int Graphics::getWidth() { return this->width;  }
 SDL_Renderer* Graphics::getRenderer() { return this->renderer;  }
 
 void Graphics::fill_screen() {
-	//fill_surface(this->main_screen);
 	SDL_RenderClear(this->renderer);
 }
 

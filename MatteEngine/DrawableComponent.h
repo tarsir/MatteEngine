@@ -13,26 +13,9 @@ class DrawableComponent : public Component {
 public:
 	/*
 		Constructor that takes a filename for a texture and a layer number.
-
-		This will apply transparency with the default color of {64, 64, 64}, but
-		any other processing is left to the caller.
 	*/
 	DrawableComponent(std::string texture_location, uint32_t _layer, Graphics* gfx = Graphics::getInstance()) : layer{ _layer } {
-		SDL_Surface* temp = load_image_as_surface(texture_location);
-
-		Color transparent_gray = { 0, 0, 0};
-		//add_transparency_to_surface(temp, transparent_gray);
-		this->texture = SDL_CreateTextureFromSurface(gfx->getRenderer(), temp);
-	}
-
-	/*
-		Constructor that takes a layer number and a fully processed SDL_Texture.
-
-		This does NOT apply transparency or anything else to the texture. It is expected
-		the caller of this constructor will have done anything like that.
-	*/
-	DrawableComponent(SDL_Surface* _texture, uint32_t _layer, Graphics* gfx = Graphics::getInstance()) : layer{ _layer } {
-		this->texture = SDL_CreateTextureFromSurface(gfx->getRenderer(), _texture);
+		this->texture = load_image_as_texture(texture_location, gfx);
 	}
 
 	/*

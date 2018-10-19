@@ -20,40 +20,12 @@ bool image_init() {
 	return true;
 }
 
-SDL_Surface* load_image_as_surface(std::string path) {
-	SDL_Surface* final_surface = NULL;
-
-	SDL_Surface* loaded_surface = IMG_Load(path.c_str());
-	if (loaded_surface == NULL) {
-		image_logger->error("Could not load image at: {}\nDetailed error: {}", path, IMG_GetError());
-	} else {
-		final_surface = SDL_ConvertSurface(loaded_surface, screen_pixel_format, NULL);
-		if (final_surface == NULL) {
-			image_logger->error("Could not optimize image at: {}\nDetailed error: {}", path, SDL_GetError());
-		}
-		
-		SDL_FreeSurface(loaded_surface);
-	}
-	image_logger->info("made a dude");
-
-	return final_surface;
-}
-
 SDL_Texture* load_image_as_texture(std::string path, Graphics* gfx = Graphics::getInstance()) {
-	return SDL_CreateTextureFromSurface(gfx->getRenderer(), load_image_as_surface(path));
-}
-
-void fill_surface(SDL_Surface* target_sfc) {
-	if (SDL_FillRect(target_sfc, NULL, SDL_MapRGB(screen_pixel_format, 24, 24, 24)) != 0) {
-		image_logger->error("Could not fill surface with color");
+	SDL_Texture *texture = IMG_LoadTexture(gfx->getRenderer(), path.c_str());
+	if (texture == nullptr) {
+		image_logger->error("Error loading texture at: {} ()", path, SDL_GetError());
 	}
-}
-
-void add_transparency_to_surface(SDL_Surface* target_surface, Color& transparent_color) {
-	Uint32 transparency_key = color_to_rgb_key(target_surface->format, transparent_color);
-	if (SDL_SetColorKey(target_surface, SDL_TRUE, transparency_key) < 0) {
-		image_logger->error("Setting transparency failed");
-	}
+	return texture;
 }
 
 /*

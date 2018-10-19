@@ -17,7 +17,8 @@ auto sprite_logger = spdlog::stdout_color_mt("Sprite.h");
 namespace ESprite {
 	Entity* makeSprite(std::string sprite_filename, uint32_t layer = 10) {
 		Entity* base = new Entity();
-		DrawableComponent* drawable = new DrawableComponent(sprite_filename, layer);
+		SDL_Texture* texture = IMG_LoadTexture(Graphics::getInstance()->getRenderer(), sprite_filename.c_str());
+		DrawableComponent* drawable = new DrawableComponent(texture, layer);
 		PositionComponent* position = new PositionComponent(50, 50);
 		base->register_component(drawable);
 		base->register_component(position);
