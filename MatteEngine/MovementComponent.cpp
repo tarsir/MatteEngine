@@ -2,7 +2,7 @@
 
 MovementComponent::MovementComponent() {
 	this->max_speed = 25;
-	this->current_speed = 0;
+	this->current_speed = 10;
 }
 
 MovementComponent::MovementComponent(int _max) {

@@ -34,6 +34,9 @@
     <Filter Include="Source Files\Systems">
       <UniqueIdentifier>{e0ceb1b4-f703-4af2-a7a9-51d50a77b9b5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Common">
+      <UniqueIdentifier>{49695652-65ce-4e39-bc31-89300889c7cd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -77,6 +80,9 @@
     </ClCompile>
     <ClCompile Include="Motion.cpp">
       <Filter>Source Files\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="FacingConstants.cpp">
+      <Filter>Source Files\Common</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
