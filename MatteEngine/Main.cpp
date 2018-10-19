@@ -56,7 +56,10 @@ void update(EntityManager* mgr, Graphics* window = Graphics::getInstance()) {
 		window->update_window();
 
 		// fps capping
-		if (Timing::get_seconds_elapsed() != current_second) {
+		int s_elapsed = Timing::get_seconds_elapsed();
+		if (s_elapsed != current_second) {
+			main_logger->info("target tick time: {}", time_per_tick);
+			main_logger->info("ms of tick: {}", ms_of_tick);
 			main_logger->info("fps: {}", ticks_per_sec);
 			main_logger->info("missed ticks: {}", missedTicks);
 			fps_texture = build_string_texture(
@@ -67,7 +70,7 @@ void update(EntityManager* mgr, Graphics* window = Graphics::getInstance()) {
 			);
 			ticks_per_sec = 0;
 			missedTicks = 0;
-			current_second = Timing::get_seconds_elapsed();
+			current_second = s_elapsed;
 		}
 
 		++ticks_per_sec;
@@ -75,9 +78,10 @@ void update(EntityManager* mgr, Graphics* window = Graphics::getInstance()) {
 		ms_of_tick = Timing::get_tick_ms_elapsed();
 		ticks_remaining = time_per_tick - ms_of_tick;
 		if (ticks_remaining > 0) {
-			missedTicks += (1000.0/window->get_fps_cap() - ticks_remaining);
+			missedTicks += (time_per_tick - ticks_remaining);
 			//main_logger->info("holding for {} ticks", ticks_remaining);
 			SDL_Delay(ticks_remaining);
+			Timing::get_tick_ms_elapsed();
 		}
 	}
 }
