@@ -149,6 +149,8 @@
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EnvironmentTile.h" />
     <ClInclude Include="Errors.h" />
+    <ClInclude Include="FacingComponent.h" />
+    <ClInclude Include="FacingConstants.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Initialization.h" />
     <ClInclude Include="Logging.h" />

@@ -1,4 +1,5 @@
 #include "AnimationComponent.h"
+#include "FacingConstants.h"
 
 auto animation_c_logger = spdlog::stdout_color_mt("AnimationComponent.h");
 
@@ -27,7 +28,7 @@ bool AnimationComponent::is_moving() {
 	return this->is_in_motion;
 }
 
-std::string AnimationComponent::get_neutral_description_for_direction(Facing direction) {
+std::string AnimationComponent::get_neutral_description_for_direction(FacingDirection direction) {
 	auto is_neutral_for_direction = [direction](AnimationInfo anim_info) {
 		return anim_info.is_neutral && anim_info.animation_direction == direction;
 	};

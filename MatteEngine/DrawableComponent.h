@@ -20,8 +20,8 @@ public:
 	DrawableComponent(std::string texture_location, uint32_t _layer, Graphics* gfx = Graphics::getInstance()) : layer{ _layer } {
 		SDL_Surface* temp = load_image_as_surface(texture_location);
 
-		Color transparent_gray = { 64, 64, 64 };
-		add_transparency_to_surface(temp, transparent_gray);
+		Color transparent_gray = { 0, 0, 0};
+		//add_transparency_to_surface(temp, transparent_gray);
 		this->texture = SDL_CreateTextureFromSurface(gfx->getRenderer(), temp);
 	}
 

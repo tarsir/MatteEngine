@@ -1,14 +1,17 @@
 #include <algorithm>
 #include <iterator>
 #include <vector>
-#include "AnimationComponent.h"
-#include "SpriteMapComponent.h"
-#include "PositionComponent.h"
-#include "DrawableComponent.h"
-#include "ComponentList.h"
 #include "Logging.h"
 #include "Entity.h"
 #include <spdlog\spdlog.h>
+
+#include "AnimationComponent.h"
+#include "ComponentList.h"
+#include "DrawableComponent.h"
+#include "FacingComponent.h"
+#include "PositionComponent.h"
+#include "SpriteMapComponent.h"
+
 
 auto entity_cpp_logger = spdlog::stdout_color_mt("Entity.cpp");
 
@@ -53,18 +56,23 @@ Component* Entity::get_component(ComponentTypes type) const {
 	auto matcher = [&type](Component* search_component)
 	{
 		switch (type) {
+		case ANIMATION:
+			if (dynamic_cast<AnimationComponent*>(search_component)) {
+				return true;
+			}
+			break;
 		case DRAWABLE:
 			if (dynamic_cast<DrawableComponent*>(search_component)) {
 				return true;
 			}
 			break;
-		case POSITION:
-			if (dynamic_cast<PositionComponent*>(search_component)) {
+		case FACING:
+			if (dynamic_cast<FacingComponent*>(search_component)) {
 				return true;
 			}
 			break;
-		case ANIMATION:
-			if (dynamic_cast<AnimationComponent*>(search_component)) {
+		case POSITION:
+			if (dynamic_cast<PositionComponent*>(search_component)) {
 				return true;
 			}
 			break;

@@ -5,16 +5,10 @@
 #include <string>
 #include <SDL.h>
 #include "BaseComponent.h"
+#include "FacingConstants.h"
 #include "ComponentList.h"
 #include "spdlog\spdlog.h"
 
-
-enum Facing {
-	NORTH = 99000,
-	EAST,
-	SOUTH,
-	WEST
-};
 
 /*
 	What does this do?
@@ -26,7 +20,7 @@ struct AnimationFrame {
 struct AnimationInfo {
 	std::string description;
 	bool is_neutral;
-	Facing animation_direction;
+	FacingDirection animation_direction;
 	int duration; //how long to stay on this frame in ms
 	int sequence_number;
 };
@@ -47,5 +41,9 @@ public:
 	void stop_motion();
 	void start_motion();
 	bool is_moving();
-	std::string get_neutral_description_for_direction(Facing direction);
+	std::string get_neutral_description_for_direction(FacingDirection direction);
+
+	ComponentTypes component_type() {
+		return this->c_type;
+	}
 };
