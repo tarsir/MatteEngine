@@ -5,5 +5,6 @@ enum ComponentTypes {
 	POSITION,
 	ANIMATION,
 	SPRITE_MAP,
-	FACING
+	FACING,
+	MOVEMENT
 };

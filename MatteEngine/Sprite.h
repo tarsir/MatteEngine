@@ -6,6 +6,7 @@
 #include "AnimationComponent.h"
 #include "DrawableComponent.h"
 #include "FacingComponent.h"
+#include "MovementComponent.h"
 #include "PositionComponent.h"
 #include "SpriteMapComponent.h"
 #include "Entity.h"
@@ -24,6 +25,11 @@ namespace ESprite {
 		base->register_component(position);
 		sprite_logger->info("made a sprite from file: {}", sprite_filename);
 		return base;
+	}
+
+	void register_motion_dev(Entity* target_entity) {
+		MovementComponent *movement = new MovementComponent();
+		target_entity->register_component(movement);
 	}
 
 	void register_sprite_map_dev(Entity* target_entity) {

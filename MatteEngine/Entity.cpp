@@ -9,6 +9,7 @@
 #include "ComponentList.h"
 #include "DrawableComponent.h"
 #include "FacingComponent.h"
+#include "MovementComponent.h"
 #include "PositionComponent.h"
 #include "SpriteMapComponent.h"
 
@@ -68,6 +69,11 @@ Component* Entity::get_component(ComponentTypes type) const {
 			break;
 		case FACING:
 			if (dynamic_cast<FacingComponent*>(search_component)) {
+				return true;
+			}
+			break;
+		case MOVEMENT:
+			if (dynamic_cast<MovementComponent*>(search_component)) {
 				return true;
 			}
 			break;

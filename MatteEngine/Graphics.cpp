@@ -52,7 +52,7 @@ Graphics::Graphics(int width, int height, int pos_x, int pos_y) {
 		die();
 	}
 	set_pixel_format(this->main_screen->format);
-	this->fps_cap = 120;
+	this->fps_cap = 20;
 
 	this->writing_font = TTF_OpenFont("DroidSans.ttf", 18);
 
