@@ -56,7 +56,8 @@ Graphics::Graphics(int width, int height, int pos_x, int pos_y) {
 
 	this->writing_font = TTF_OpenFont("DroidSans.ttf", 18);
 
-	this->renderer = SDL_CreateRenderer(this->window, -1, SDL_RENDERER_ACCELERATED);
+	this->renderer = SDL_CreateRenderer(this->window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE);
+	SDL_SetRenderDrawBlendMode(this->renderer, SDL_BLENDMODE_BLEND);
 	SDL_SetRenderDrawColor(this->renderer, 0, 0, 0, 255);
 }
 
@@ -159,6 +160,7 @@ void apply_partial_texture_to_screen(
 	Graphics* gfx = Graphics::getInstance()
 ) {
 	SDL_Rect destination = { pos->x, pos->y, bounding_rectangle.w, bounding_rectangle.h};
+	SDL_SetTextureBlendMode(full_texture, SDL_BLENDMODE_BLEND);
 
 	SDL_RenderCopy(gfx->getRenderer(), full_texture, &bounding_rectangle, &destination);
 }

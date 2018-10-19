@@ -38,7 +38,7 @@ std::vector< std::string > read_file(const char* filename) {
 
 void die() {
 	util_logger->info("Everything is dying");
-	SDL_Delay(5000);
+	SDL_Delay(1000);
 	exit(1);
 }
 

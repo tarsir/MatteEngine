@@ -97,6 +97,7 @@ int main(int argc, char *argv[])
 
 	// make sprite_map_component for our basic entity
 	ESprite::register_sprite_map_dev(test_sprite);
+	ESprite::register_animation_dev(test_sprite);
 
 	// make our test map and tileset
 	Tileset* test_tiles = new Tileset("blue");

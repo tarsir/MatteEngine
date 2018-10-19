@@ -20,6 +20,14 @@ public:
 	*/
 	FacingComponent(FacingDirection _dir) : direction { _dir } {}
 
+	FacingComponent() {
+		this->direction = FacingDirection::NORTH;
+	}
+
+	FacingDirection getDirection() {
+		return this->direction;
+	}
+
 	void setDirection(FacingDirection dir) {
 		this->direction = dir;
 	}
