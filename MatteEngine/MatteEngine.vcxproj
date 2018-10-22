@@ -129,16 +129,25 @@
     <ClCompile Include="AnimationComponent.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Config.cpp" />
+    <ClCompile Include="DrawableComponent.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="EnvironmentTile.cpp" />
+    <ClCompile Include="FacingComponent.cpp" />
     <ClCompile Include="FacingConstants.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Initialization.cpp" />
     <ClCompile Include="Logging.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Graphics.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="Motion.cpp" />
     <ClCompile Include="MovementComponent.cpp" />
+    <ClCompile Include="Music.cpp" />
+    <ClCompile Include="PositionComponent.cpp" />
+    <ClCompile Include="Render.cpp" />
+    <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteMapComponent.cpp" />
+    <ClCompile Include="SystemManager.cpp" />
     <ClCompile Include="Timing.cpp" />
     <ClCompile Include="Util.cpp" />
   </ItemGroup>

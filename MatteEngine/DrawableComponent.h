@@ -28,15 +28,7 @@ public:
 		this->texture = _texture;
 	}
 
-	uint32_t get_layer() const {
-		return this->layer;
-	}
-
-	SDL_Texture* get_texture() const {
-		return this->texture;
-	}
-
-	ComponentTypes component_type() {
-		return this->c_type;
-	}
+	uint32_t get_layer() const;
+	SDL_Texture* get_texture() const;
+	ComponentTypes component_type();
 };

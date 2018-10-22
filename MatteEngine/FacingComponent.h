@@ -10,53 +10,15 @@ class FacingComponent : public Component {
 public:
 	FacingComponent(FacingDirection _dir) : direction { _dir } {}
 
-	FacingComponent() {
-		this->direction = FacingDirection::NORTH;
-	}
+	FacingComponent();
 
-	FacingDirection getDirection() {
-		return this->direction;
-	}
+	FacingDirection getDirection();
 
-	void setDirection(FacingDirection dir) {
-		this->direction = dir;
-	}
+	void setDirection(FacingDirection dir);
 
-	void rotateClockwise() {
-		switch (this->direction) {
-		case NORTH:
-			this->direction = EAST;
-			break;
-		case EAST:
-			this->direction = SOUTH;
-			break;
-		case SOUTH:
-			this->direction = WEST;
-			break;
-		case WEST:
-			this->direction = NORTH;
-			break;
-		}
-	}
+	void rotateClockwise();
 
-	void rotateCounterClockwise() {
-		switch (this->direction) {
-		case NORTH:
-			this->direction = WEST;
-			break;
-		case EAST:
-			this->direction = NORTH;
-			break;
-		case SOUTH:
-			this->direction = EAST;
-			break;
-		case WEST:
-			this->direction = SOUTH;
-			break;
-		}
-	}
+	void rotateCounterClockwise();
 
-	ComponentTypes component_type() {
-		return this->c_type;
-	}
+	ComponentTypes component_type();
 };
