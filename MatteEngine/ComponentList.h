@@ -7,5 +7,6 @@ enum ComponentTypes {
 	SPRITE_MAP,
 	FACING,
 	MOVEMENT,
-	COLLISION
+	COLLISION,
+	HITBOX
 };

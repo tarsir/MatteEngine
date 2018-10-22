@@ -6,7 +6,6 @@
 #include <SDL.h>
 #include "ComponentList.h"
 #include "BaseComponent.h"
-#include "spdlog\spdlog.h"
 
 
 class SpriteMapComponent : public Component {

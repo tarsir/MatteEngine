@@ -1,10 +1,12 @@
 #include "EnvironmentTile.h"
 #include "spdlog\spdlog.h"
 
-auto tile_logger = spdlog::stdout_color_mt("EnvironmentTile.h");
+auto tile_logger = spdlog::stdout_color_mt("EnvironmentTile.cpp");
 
 namespace EEnvironmentTile {
-	Entity* makeTile(SDL_Texture* tile_sfc, int x, int y, int layer = 5) {
+	int default_tile_size = 32;
+
+	Entity* makeTile(SDL_Texture* tile_sfc, int x, int y, int layer) {
 		Entity* base = new Entity();
 
 		DrawableComponent* drawable = new DrawableComponent(tile_sfc, layer);
@@ -14,7 +16,7 @@ namespace EEnvironmentTile {
 		return base;
 	}
 
-	Entity* makeCollidableTile(SDL_Texture* tile_sfc, int x, int y, int layer = 5) {
+	Entity* makeCollidableTile(SDL_Texture* tile_sfc, int x, int y, int layer) {
 		Entity* base = makeTile(tile_sfc, x, y, layer);
 
 		// TODO: need CollidableComponent

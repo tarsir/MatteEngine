@@ -16,3 +16,20 @@ void PositionComponent::add_positions(PositionComponent* other_pos) {
 	this->x += other_pos->x;
 	this->y += other_pos->y;
 }
+
+void PositionComponent::move_in_direction(FacingDirection dir, int amount) {
+	switch (dir) {
+	case NORTH:
+		this->y -= amount;
+		break;
+	case SOUTH:
+		this->y += amount;
+		break;
+	case WEST:
+		this->x -= amount;
+		break;
+	case EAST:
+		this->x += amount;
+		break;
+	}
+}

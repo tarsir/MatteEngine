@@ -7,10 +7,6 @@
 #include "Image.h"
 #include "Entity.h"
 #include "EnvironmentTile.h"
-#include "spdlog\spdlog.h"
-
-const static char EMPTY_TILE = 'N';
-auto tileset_logger = spdlog::stdout_color_mt("Tileset.h");
 
 
 class Tileset {
@@ -26,37 +22,22 @@ private:
 	}
 
 public:
-	Tileset(std::string ident, Graphics* gfx = Graphics::getInstance()) : identifier{ ident } {
-		this->tile_mapping.emplace(EMPTY_TILE, load_image_as_texture(this->find_tile_filename("empty"), gfx));
-	}
-
+	Tileset(std::string ident, Graphics* gfx = Graphics::getInstance());
 	//Tileset(std::string ident) : Tileset(ident, Graphics::getInstance()) {}
 
 	Tileset(Graphics* gfx) : Tileset("default", gfx) {}
 
-	SDL_Texture* get_surface_for_tile_key(const char tile_key) {
-		this->tile_mapping_it = this->tile_mapping.find(tile_key);
-		if (this->tile_mapping_it != this->tile_mapping.end()) 
-			return this->tile_mapping.at(tile_key);
-		tileset_logger->error("could not find tile for: {} in tileset {}", tile_key, this->identifier);
-		return this->tile_mapping.at(EMPTY_TILE);
-	}
+	SDL_Texture* get_surface_for_tile_key(const char tile_key);
 
-	std::string get_identifier() {
-		return this->identifier;
-	}
+	std::string get_identifier();
 };
 
 class TilesetManager {
 private:
 	std::map<std::string, Tileset*> registered_tilesets;
 public:
-	void register_new_tileset(Tileset* new_tileset) {
-		this->registered_tilesets.emplace(new_tileset->get_identifier(), new_tileset);
-	}
+	void register_new_tileset(Tileset* new_tileset);
 
-	Tileset* get_tileset_by_identifier(std::string identifier) {
-		return this->registered_tilesets.at(identifier);
-	}
+	Tileset* get_tileset_by_identifier(std::string identifier);
 
 };

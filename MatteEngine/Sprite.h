@@ -13,7 +13,7 @@
 #include "ComponentList.h"
 
 namespace ESprite {
-	Entity* makeSprite(std::string sprite_filename, uint32_t layer = 10);
+	Entity* makeSprite(std::string sprite_filename, uint32_t layer);
 
 	// development functions to make adding shit to our test sprite easier
 	void register_motion_dev(Entity* target_entity);

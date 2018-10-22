@@ -1,23 +1,30 @@
-#include <SDL.h>
+#include "SDL_image.h"
+#include "CollisionComponent.h"
+#include "HitboxComponent.h"
+#include "Graphics.h"
 #include "Sprite.h"
 #include "spdlog\spdlog.h"
 
-auto sprite_logger = spdlog::stdout_color_mt("Sprite.h");
+auto sprite_logger = spdlog::stdout_color_mt("Sprite.cpp");
 
 namespace ESprite {
+
 	Entity* makeSprite(std::string sprite_filename, uint32_t layer = 10) {
 		Entity* base = new Entity();
 		SDL_Texture* texture = IMG_LoadTexture(Graphics::getInstance()->getRenderer(), sprite_filename.c_str());
 		DrawableComponent* drawable = new DrawableComponent(texture, layer);
 		PositionComponent* position = new PositionComponent(50, 50);
+		HitboxComponent* hitbox = new HitboxComponent(32, 32);
 		base->register_component(drawable);
 		base->register_component(position);
+		base->register_component(hitbox);
 		sprite_logger->info("made a sprite from file: {}", sprite_filename);
 		return base;
 	}
 
 	void register_motion_dev(Entity* target_entity) {
 		MovementComponent *movement = new MovementComponent();
+		CollisionComponent *collision = new CollisionComponent();
 		target_entity->register_component(movement);
 	}
 

@@ -2,6 +2,7 @@
 #include <string>
 #include "ComponentList.h"
 #include "BaseComponent.h"
+#include "FacingConstants.h"
 
 class PositionComponent : public Component {
 	static const ComponentTypes c_type = POSITION;
@@ -16,4 +17,5 @@ public:
 	int increment_y();
 	ComponentTypes component_type();
 	void add_positions(PositionComponent* other_pos);
+	void move_in_direction(FacingDirection, int);
 };

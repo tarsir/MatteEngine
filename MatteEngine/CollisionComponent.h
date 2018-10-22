@@ -3,7 +3,7 @@
 #include "BaseComponent.h"
 #include "ComponentList.h"
 
-class CollisionComponent : Component {
+class CollisionComponent : public Component {
 	ComponentTypes c_type = COLLISION;
 	bool isEnabled;
 public:

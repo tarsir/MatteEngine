@@ -5,8 +5,6 @@
 #include <vector>
 #include <string>
 
-auto map_logger = spdlog::stdout_color_mt("Map.h");
-
 class Map {
 private:
 	std::string identifier;

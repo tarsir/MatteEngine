@@ -17,6 +17,9 @@
 #include "Tileset.h"
 #include "Timing.h"
 
+#include "CollisionComponent.h"
+#include "HitboxComponent.h"
+
 
 Graphics *Graphics::singleton = 0;
 auto main_logger = spdlog::stdout_color_mt("Main.cpp");
@@ -103,6 +106,17 @@ int main(int argc, char *argv[])
 	ESprite::register_sprite_map_dev(test_sprite);
 	ESprite::register_animation_dev(test_sprite);
 	ESprite::register_motion_dev(test_sprite);
+
+	Entity* other_collidable_sprite = new Entity();
+	DrawableComponent* d_comp = new DrawableComponent("data/tilesets/default/empty.png", 2);
+	PositionComponent* p_comp = new PositionComponent(80, 80);
+	CollisionComponent* c_comp = new CollisionComponent();
+	HitboxComponent *hb_comp = new HitboxComponent(16, 16);
+	other_collidable_sprite->register_component(d_comp);
+	other_collidable_sprite->register_component(p_comp);
+	other_collidable_sprite->register_component(c_comp);
+	other_collidable_sprite->register_component(hb_comp);
+	mgr->register_entity(other_collidable_sprite);
 
 	// make our test map and tileset
 	Tileset* test_tiles = new Tileset("blue");

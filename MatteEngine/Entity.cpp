@@ -7,6 +7,7 @@
 
 #include "AnimationComponent.h"
 #include "ComponentList.h"
+#include "CollisionComponent.h"
 #include "DrawableComponent.h"
 #include "FacingComponent.h"
 #include "MovementComponent.h"
@@ -59,6 +60,11 @@ Component* Entity::get_component(ComponentTypes type) const {
 		switch (type) {
 		case ANIMATION:
 			if (dynamic_cast<AnimationComponent*>(search_component)) {
+				return true;
+			}
+			break;
+		case COLLISION:
+			if (dynamic_cast<CollisionComponent*>(search_component)) {
 				return true;
 			}
 			break;

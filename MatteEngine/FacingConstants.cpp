@@ -13,4 +13,11 @@ namespace CFacing {
 			return b == NORTH;
 		}
 	}
+
+	FacingDirection get_opposite_direction(FacingDirection a) {
+		if (a == NORTH) return SOUTH;
+		else if (a == SOUTH) return NORTH;
+		else if (a == EAST) return WEST;
+		else if (a == WEST) return EAST;
+	}
 }

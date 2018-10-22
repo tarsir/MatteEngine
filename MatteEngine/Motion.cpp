@@ -1,6 +1,7 @@
 #include <SDL.h>
 #include "Entity.h"
 #include "Motion.h"
+#include "Collision.h"
 #include "FacingConstants.h"
 #include "spdlog\spdlog.h"
 
@@ -9,7 +10,7 @@
 #include "FacingComponent.h"
 #include "PositionComponent.h"
 
-auto motion_logger = spdlog::stdout_color_mt("Motion.h");
+auto motion_logger = spdlog::stdout_color_mt("Motion.cpp");
 
 
 namespace SMotion {
@@ -35,24 +36,16 @@ namespace SMotion {
 
 		facing->setDirection(dir);
 
-		if (CFacing::is_opposite_directions(facing->getDirection(), dir)) {
-			movement->stop();
+		position->move_in_direction(dir, movement->get_current_speed());
+
+		int collision_height, collision_length;
+		SCollision::entity_is_colliding(target_entity, entity_mgr, &collision_height, &collision_length);
+
+		if (collision_height > 0) {
+			position->move_in_direction(CFacing::get_opposite_direction(dir), collision_height);
 		}
-		else {
-			switch (dir) {
-			case NORTH:
-				position->y -= movement->get_current_speed();
-				break;
-			case SOUTH:
-				position->y += movement->get_current_speed();
-				break;
-			case WEST:
-				position->x -= movement->get_current_speed();
-				break;
-			case EAST:
-				position->x += movement->get_current_speed();
-				break;
-			}
+		else if (collision_length > 0) {
+			position->move_in_direction(CFacing::get_opposite_direction(dir), collision_length);
 		}
 	}
 
