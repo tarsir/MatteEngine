@@ -6,5 +6,6 @@ enum ComponentTypes {
 	ANIMATION,
 	SPRITE_MAP,
 	FACING,
-	MOVEMENT
+	MOVEMENT,
+	COLLISION
 };
